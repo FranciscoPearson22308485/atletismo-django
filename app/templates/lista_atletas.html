@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Atletas</title>
+</head>
+<body>
+<h1>Atletas:</h1>
+<ul>
+    {% for atleta in atletas %}
+    <li><strong>{{ atleta.nome }}</strong>
+        <ul>
+            {% for torneio in atleta.torneios.all %}
+            <li>{{ torneio.nome }} ({{ torneio.local }})</li>
+            {% empty %}
+            <li><em>Sem torneios</em></li>
+            {% endfor %}
+        </ul>
+    </li>
+    {% endfor %}
+</ul>
+</body>
+</html>

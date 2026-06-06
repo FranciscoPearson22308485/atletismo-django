@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Torneios de Atletismo</title>
+</head>
+<body>
+<h1>Torneios de Atletismo:</h1>
+<ul>
+    {% for torneio in torneios %}
+    <li><strong>{{ torneio.nome }}</strong> ({{ torneio.local }})
+        <ul>
+            <li>Provas:
+                {% for prova in torneio.provas.all %}{{ prova.nome }}{% if not forloop.last %}, {% endif %}{% empty %}sem provas{% endfor %}
+            </li>
+            <li>Atletas:
+                {% for atleta in torneio.atletas.all %}{{ atleta.nome }}{% if not forloop.last %}, {% endif %}{% empty %}sem atletas{% endfor %}
+            </li>
+        </ul>
+    </li>
+    {% empty %}
+    <li>Sem torneios</li>
+    {% endfor %}
+</ul>
+</body>
+</html>
